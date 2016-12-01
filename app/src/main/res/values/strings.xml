@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">FirstCar</string>
+    <string name="stop">stop</string>
+    <string name="reboot">重启</string>
+    <string name="action">action</string>
+    <string name="launch_param">发射参数</string>
+    <string name="pos_param">发射点</string>
+    <string name="clear">清屏</string>
+    <string name="send">发送</string>
+    <string name="connect">连接</string>
+    <string name="x">x:</string>
+    <string name="y">y:</string>
+    <string name="pitch">pitch:</string>
+    <string name="roll">roll:</string>
+    <string name="speed">speed:</string>
+    <string name="yaw">yaw:</string>
+    <string name="go">go</string>
+    <string name="set">set</string>
+    <string name="target">target:</string>
+    <string name="change">改</string>
+    <string name="add_launch">加launch</string>
+    <string name="add_pos">加pos</string>
+    <string name="right">右</string>
+    <string name="left">左</string>
+</resources>
