@@ -5,6 +5,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.view.WindowManager;
@@ -17,7 +18,7 @@ import app.akexorcist.bluetotohspp.library.BluetoothState;
 import app.akexorcist.bluetotohspp.library.DeviceList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    public static BluetoothSPP bt;
+    public static BluetoothWithLock bt;
     public static int target = 1;
     public static int launch_now = 0;
     public static int pos_now = 0;
@@ -29,8 +30,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.main_bt_action).setOnClickListener(this);
         findViewById(R.id.main_bt_clear).setOnClickListener(this);
         findViewById(R.id.main_bt_connect).setOnClickListener(this);
-        findViewById(R.id.main_bt_launch).setOnClickListener(this);
-        findViewById(R.id.main_bt_pos).setOnClickListener(this);
         findViewById(R.id.main_bt_reboot).setOnClickListener(this);
         findViewById(R.id.main_bt_send).setOnClickListener(this);
         findViewById(R.id.main_bt_stop).setOnClickListener(this);
@@ -38,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         TextView textView = (TextView)findViewById(R.id.main_msg);
         textView.setMovementMethod(ScrollingMovementMethod.getInstance());
 
-        bt = new BluetoothSPP(this);
+        bt = new BluetoothWithLock(this);
         if(!bt.isBluetoothAvailable()) {
             Toast.makeText(getApplicationContext()
                     , "Bluetooth is not available"
@@ -52,18 +51,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     if(bt.getServiceState() == BluetoothState.STATE_CONNECTED)
                     {
                         bt.send("pos now",true);
+                        System.out.println("send1!");
                         try {
-                            Thread.sleep(1000);
+                            sleep(2000);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                        bt.send("launch now",true);
-                        System.out.println("send!");
-                    }
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
                     }
                 }
             }
@@ -71,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         thread.start();
 
-        bt.setBluetoothConnectionListener(new BluetoothSPP.BluetoothConnectionListener() {
+        bt.setBluetoothConnectionListener(new BluetoothWithLock.BluetoothConnectionListener() {
             public void onDeviceConnected(String name, String address) {
                 Toast.makeText(getApplicationContext()
                         , "Connected to " + name + "\n" + address
@@ -95,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         EditText editText;
+        TextView tx_message;
         switch (v.getId()){
             case R.id.main_bt_action:
                 startActivity(new Intent(this, ActionActivity.class));
@@ -118,6 +112,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.main_bt_stop:
                 bt.send("stop",true);
+                break;
+            case R.id.main_bt_clear:
+                tx_message = (TextView)findViewById(R.id.main_msg);
+                tx_message.setText("");
+                break;
+            case R.id.main_bt_reboot:
+                bt.send("reboot",true);
                 break;
             default:
                 break;
@@ -143,9 +144,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onResume(){
         super.onResume();
-        bt.setOnDataReceivedListener(new BluetoothSPP.OnDataReceivedListener() {
+        bt.setOnDataReceivedListener(new BluetoothWithLock.OnDataReceivedListener() {
             public void onDataReceived(byte[] data, String message) {
                 String str = message.replace("\\n","\n");
+
+                System.out.println(str);
                 String[] words = str.split(" ");
                 String[] word;
                 TextView tx_message;
@@ -154,6 +157,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 {
                     tx_message= (TextView)findViewById(R.id.main_msg);
                     tx_message.append(str+'\n');
+                    final int scrollAmount = tx_message.getLayout().getLineTop(tx_message.getLineCount()) - tx_message.getHeight();
+                    if (scrollAmount > 0)
+                        tx_message.scrollTo(0, scrollAmount);
+                    else
+                        tx_message.scrollTo(0, 0);
                 }else if (word[0].equals("x") || word[0].equals("pitch"))
                 {
                     for (String word1 : words) {
@@ -188,6 +196,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }else {
                     tx_message = (TextView) findViewById(R.id.main_msg);
                     tx_message.append(str + '\n');
+                    final int scrollAmount = tx_message.getLayout().getLineTop(tx_message.getLineCount()) - tx_message.getHeight();
+                    if (scrollAmount > 0)
+                        tx_message.scrollTo(0, scrollAmount);
+                    else
+                        tx_message.scrollTo(0, 0);
                 }
             }
         });

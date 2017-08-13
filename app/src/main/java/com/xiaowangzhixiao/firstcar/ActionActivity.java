@@ -7,18 +7,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import app.akexorcist.bluetotohspp.library.BluetoothSPP;
-
 public class ActionActivity extends AppCompatActivity implements View.OnClickListener {
-    private BluetoothSPP bt_son;
+    private BluetoothWithLock bt_son;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_action);
         bt_son = MainActivity.bt;
-        bt_son.setOnDataReceivedListener(new BluetoothSPP.OnDataReceivedListener() {
+        bt_son.setOnDataReceivedListener(new BluetoothWithLock.OnDataReceivedListener() {
             public void onDataReceived(byte[] data, String message) {
                 String str = message.replace("\\n","\n");
+                System.out.println(str);
                 String[] words = str.split(" ");
                 String[] word;
                 TextView tx_message;
@@ -26,7 +25,7 @@ public class ActionActivity extends AppCompatActivity implements View.OnClickLis
                 if (word[0].equals("msg"))
                 {
                     Toast.makeText(ActionActivity.this,str,Toast.LENGTH_SHORT).show();
-                }else if (word[0].equals("x") || word[0].equals("pitch"))
+                }else if (word[0].equals("x") || word[0].equals("pitch") || word[0].equals("speedmax"))
                 {
                     for (String word1 : words) {
                         word = word1.split(":");
@@ -55,6 +54,38 @@ public class ActionActivity extends AppCompatActivity implements View.OnClickLis
                                 tx_message = (TextView)findViewById(R.id.act_tv_yaw);
                                 tx_message.setText(String.format("yaw:%s", word[1]));
                                 break;
+                            case "speedmax":
+                                tx_message = (EditText)findViewById(R.id.act_et_speedmax);
+                                tx_message.setText(String.format("%s", word[1]));
+                                break;
+                            case "movespeed":
+                                tx_message = (EditText)findViewById(R.id.act_et_movespeed);
+                                tx_message.setText(String.format("%s", word[1]));
+                                break;
+                            case "moveradium":
+                                tx_message = (EditText)findViewById(R.id.act_et_moveradium);
+                                tx_message.setText(String.format("%s", word[1]));
+                                break;
+                            case "angleradium":
+                                tx_message = (EditText)findViewById(R.id.act_et_angleradium);
+                                tx_message.setText(String.format("%s", word[1]));
+                                break;
+                            case "anglespeed":
+                                tx_message = (EditText)findViewById(R.id.act_et_anglespeed);
+                                tx_message.setText(String.format("%s", word[1]));
+                                break;
+                            case "start":
+                                tx_message = (EditText)findViewById(R.id.act_et_start);
+                                tx_message.setText(String.format("%s", word[1]));
+                                break;
+                            case "factor":
+                                tx_message = (EditText)findViewById(R.id.act_et_factor);
+                                tx_message.setText(String.format("%s", word[1]));
+                                break;
+                            case "speedmin":
+                                tx_message = (EditText)findViewById(R.id.act_et_speedmin);
+                                tx_message.setText(String.format("%s", word[1]));
+                                break;
                         }
                     }
                 }
@@ -62,13 +93,19 @@ public class ActionActivity extends AppCompatActivity implements View.OnClickLis
         });
 
         findViewById(R.id.act_bt_go).setOnClickListener(this);
-        findViewById(R.id.act_bt_launch_add).setOnClickListener(this);
-        findViewById(R.id.act_bt_left).setOnClickListener(this);
         findViewById(R.id.act_bt_pos_add).setOnClickListener(this);
-        findViewById(R.id.act_bt_right).setOnClickListener(this);
-        findViewById(R.id.act_bt_set).setOnClickListener(this);
         findViewById(R.id.act_bt_stop).setOnClickListener(this);
-        findViewById(R.id.act_bt_target).setOnClickListener(this);
+        findViewById(R.id.act_bt_movespeed).setOnClickListener(this);
+        findViewById(R.id.act_bt_speedmax).setOnClickListener(this);
+        findViewById(R.id.act_bt_moveradium).setOnClickListener(this);
+        findViewById(R.id.act_bt_angleradium).setOnClickListener(this);
+        findViewById(R.id.act_bt_anglespeed).setOnClickListener(this);
+        findViewById(R.id.act_bt_start).setOnClickListener(this);
+        findViewById(R.id.act_bt_factor).setOnClickListener(this);
+        findViewById(R.id.act_bt_speedmin).setOnClickListener(this);
+        findViewById(R.id.act_bt_param).setOnClickListener(this);
+        findViewById(R.id.act_bt_save).setOnClickListener(this);
+        findViewById(R.id.act_bt_start).setOnClickListener(this);
     }
 
     @Override
@@ -76,55 +113,58 @@ public class ActionActivity extends AppCompatActivity implements View.OnClickLis
         String string;
         EditText editText;
         EditText editText1;
+        EditText editText2;
         switch (v.getId())
         {
             case R.id.act_bt_go:
                 editText = (EditText)findViewById(R.id.act_et_x);
                 editText1 = (EditText)findViewById(R.id.act_et_y);
-                bt_son.send(String.format("action %s %s 300", editText.getText().toString(), editText1.getText().toString()),true);
-                break;
-            case R.id.act_bt_launch_add:
-                break;
-            case R.id.act_bt_left:
-                final Thread thread = new Thread(){
-                    @Override
-                    public void run() {
-                        for (int i=0;i<5;i++){
-                            bt_son.send("action left",true);
-                            try {
-                                Thread.sleep(10);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                };
-                thread.start();
+                editText2 = (EditText)findViewById(R.id.act_et_yaw);
+                bt_son.send(String.format("action %s %s %s", editText.getText().toString(), editText1.getText().toString(), editText2.getText().toString()),true);
                 break;
             case R.id.act_bt_pos_add:
+                //暂定
                 break;
-            case R.id.act_bt_set:
+            case R.id.act_bt_movespeed:
+                editText = (EditText)findViewById(R.id.act_et_movespeed);
+                bt_son.send(String.format("param movespeed %s",editText.getText().toString()),true);
                 break;
-            case R.id.act_bt_right:
-                final Thread thread1 = new Thread(){
-                    @Override
-                    public void run() {
-                        for (int i=0;i<5;i++){
-                            bt_son.send("action right",true);
-                            try {
-                                Thread.sleep(10);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                };
-                thread1.start();
+            case R.id.act_bt_speedmax:
+                editText = (EditText)findViewById(R.id.act_et_speedmax);
+                bt_son.send(String.format("param speedmax %s",editText.getText().toString()),true);
+                break;
+            case R.id.act_bt_moveradium:
+                editText = (EditText)findViewById(R.id.act_et_moveradium);
+                bt_son.send(String.format("param moveradium %s",editText.getText().toString()),true);
+                break;
+            case R.id.act_bt_angleradium:
+                editText = (EditText)findViewById(R.id.act_et_angleradium);
+                bt_son.send(String.format("param angleradium %s",editText.getText().toString()),true);
+                break;
+            case R.id.act_bt_anglespeed:
+                editText = (EditText)findViewById(R.id.act_et_anglespeed);
+                bt_son.send(String.format("param anglespeed %s",editText.getText().toString()),true);
+                break;
+            case R.id.act_bt_start:
+                editText = (EditText)findViewById(R.id.act_et_start);
+                bt_son.send(String.format("param start %s",editText.getText().toString()),true);
+                break;
+            case R.id.act_bt_factor:
+                editText = (EditText)findViewById(R.id.act_et_factor);
+                bt_son.send(String.format("param factor %s",editText.getText().toString()),true);
+                break;
+            case R.id.act_bt_speedmin:
+                editText = (EditText)findViewById(R.id.act_et_speedmin);
+                bt_son.send(String.format("param speedmin %s",editText.getText().toString()),true);
+                break;
+            case R.id.act_bt_param:
+                bt_son.send(String.format("param print"),true);
+                break;
+            case R.id.act_bt_save:
+                bt_son.send(String.format("param save"),true);
                 break;
             case R.id.act_bt_stop:
                 bt_son.send("stop",true);
-                break;
-            case R.id.act_bt_target:
                 break;
         }
     }

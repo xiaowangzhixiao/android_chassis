@@ -19,14 +19,21 @@
 
         <Button
             android:text="@string/connect"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/main_bt_connect"
             android:layout_weight="1" />
 
         <Button
+            android:text="@string/stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/main_bt_stop"
+            android:layout_weight="1" />
+
+        <Button
             android:text="home"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/main_bt_home"
             android:layout_weight="1" />
@@ -136,18 +143,6 @@
         android:id="@+id/main_bt_clear" />
 
     <Button
-        android:text="@string/pos_param"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/main_bt_pos" />
-
-    <Button
-        android:text="@string/launch_param"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/main_bt_launch" />
-
-    <Button
         android:text="@string/action"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -165,12 +160,6 @@
             android:id="@+id/main_bt_reboot"
             android:layout_weight="1" />
 
-        <Button
-            android:text="@string/stop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/main_bt_stop"
-            android:layout_weight="1" />
     </LinearLayout>
 
 </LinearLayout>

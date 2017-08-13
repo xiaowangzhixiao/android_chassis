@@ -93,19 +93,20 @@
             <TextView
                 android:text="@string/x"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_weight="1"
-                android:textSize="24sp" />
+                android:textSize="14sp" />
 
             <EditText
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_weight="2"
-                android:inputType="numberSigned|numberDecimal"
+                android:inputType="number|numberSigned|numberDecimal"
                 android:ems="10"
                 android:id="@+id/act_et_x"
                 android:labelFor="@id/act_et_x"
-                android:textSize="18sp" />
+                android:textSize="12sp" />
+
         </TableRow>
 
         <TableRow
@@ -115,19 +116,20 @@
             <TextView
                 android:text="@string/y"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_weight="1"
                 android:id="@+id/textView2"
-                android:textSize="24sp" />
+                android:textSize="14sp" />
 
             <EditText
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:inputType="numberSigned|numberDecimal"
+                android:layout_height="35dp"
+                android:inputType="number|numberSigned|numberDecimal"
                 android:layout_weight="2"
                 android:ems="10"
                 android:id="@+id/act_et_y"
-                android:labelFor="@id/act_et_y"/>
+                android:labelFor="@id/act_et_y"
+                android:textSize="12sp" />
         </TableRow>
 
     </TableLayout>
@@ -135,127 +137,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:text="@string/add_pos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/act_bt_pos_add"
-            android:layout_weight="1" />
-
-        <Button
-            android:text="@string/go"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/act_bt_go"
-            android:layout_weight="1" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:text="@string/target"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView6"
-            android:layout_weight="1"
-            android:textSize="24sp" />
-
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:inputType="numberSigned|numberDecimal"
-            android:ems="10"
-            android:id="@+id/act_et_target"
-            android:labelFor="@id/act_et_target"
-            android:layout_weight="1.5" />
-
-        <Button
-            android:text="@string/change"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/act_bt_target"
-            android:layout_weight="0.5" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:text="@string/pitch"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView"
-            android:layout_weight="1"
-            android:textSize="24sp" />
-
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:inputType="numberSigned|numberDecimal"
-            android:ems="10"
-            android:id="@+id/act_et_pitch"
-            android:labelFor="@id/act_et_pitch"
-            android:layout_weight="2" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:text="@string/roll"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView1"
-            android:layout_weight="1"
-            android:textSize="24sp" />
-
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:inputType="numberSigned|numberDecimal"
-            android:ems="10"
-            android:id="@+id/act_et_roll"
-            android:labelFor="@id/act_et_roll"
-            android:layout_weight="2" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:text="@string/speed"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView3"
-            android:layout_weight="1"
-            android:textSize="24sp" />
-
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:inputType="numberSigned|numberDecimal"
-            android:ems="10"
-            android:id="@+id/act_et_speed"
-            android:labelFor="@id/act_et_speed"
-            android:layout_weight="2" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="35dp">
 
         <TextView
             android:text="@string/yaw"
@@ -263,16 +145,18 @@
             android:layout_height="wrap_content"
             android:id="@+id/textView5"
             android:layout_weight="1"
-            android:textSize="24sp" />
+            android:textSize="14sp" />
 
         <EditText
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:inputType="numberSigned|numberDecimal"
+            android:layout_height="35dp"
+            android:inputType="number|numberSigned|numberDecimal"
             android:ems="10"
             android:id="@+id/act_et_yaw"
             android:labelFor="@id/act_et_yaw"
-            android:layout_weight="2" />
+            android:layout_weight="2"
+            android:textSize="12sp" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -281,18 +165,33 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:text="@string/add_launch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/act_bt_launch_add"
+            android:text="读取参数"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/act_bt_param"
             android:layout_weight="1" />
 
         <Button
-            android:text="@string/set"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/act_bt_set"
+            android:text="保存参数"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/act_bt_save"
             android:layout_weight="1" />
+
+        <Button
+            android:text="@string/add_pos"
+            android:layout_width="wrap_content"
+            android:id="@+id/act_bt_pos_add"
+            android:layout_weight="1"
+            android:layout_height="40dp" />
+
+        <Button
+            android:text="@string/go"
+            android:layout_width="wrap_content"
+            android:id="@+id/act_bt_go"
+            android:layout_weight="1"
+            android:layout_height="40dp" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -300,25 +199,276 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <Button
-            android:text="@string/left"
+        <TextView
             android:layout_width="0dp"
-            android:id="@+id/act_bt_left"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView6"
             android:layout_weight="1"
-            android:layout_height="100dp" />
+            android:textSize="14sp"
+            android:text="最大速度：" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:ems="10"
+            android:id="@+id/act_et_speedmax"
+            android:labelFor="@id/act_et_speedmax"
+            android:layout_weight="1.5"
+            android:inputType="number"
+            android:textSize="12sp"
+            android:layout_height="35dp" />
 
         <Button
-            android:text="@string/right"
+            android:text="@string/change"
             android:layout_width="0dp"
-            android:id="@+id/act_bt_right"
-            android:layout_weight="1"
-            android:layout_height="100dp" />
+            android:layout_height="35dp"
+            android:id="@+id/act_bt_speedmax"
+            android:layout_weight="0.5"
+            android:textSize="12sp" />
     </LinearLayout>
 
-    <Button
-        android:text="@string/stop"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/act_bt_stop" />
+        android:layout_height="36dp">
+
+        <TextView
+            android:text="加减速比例："
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="14sp" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:inputType="number|numberSigned|numberDecimal"
+            android:ems="10"
+            android:id="@+id/act_et_movespeed"
+            android:labelFor="@id/act_et_movespeed"
+            android:layout_weight="1.5"
+            android:textSize="12sp"
+            android:layout_height="35dp" />
+
+        <Button
+            android:text="@string/change"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:id="@+id/act_bt_movespeed"
+            android:layout_weight="0.5"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="转角速度比例："
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView3"
+            android:layout_weight="1"
+            android:textSize="14sp" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:inputType="number|numberSigned|numberDecimal"
+            android:ems="10"
+            android:id="@+id/act_et_anglespeed"
+            android:labelFor="@id/act_et_anglespeed"
+            android:layout_weight="1.5"
+            android:textSize="12sp"
+            android:layout_height="35dp" />
+
+        <Button
+            android:text="@string/change"
+            android:layout_width="0dp"
+            android:id="@+id/act_bt_anglespeed"
+            android:layout_weight="0.5"
+            android:textSize="12sp"
+            android:layout_height="35dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="停车范围："
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView1"
+            android:layout_weight="1"
+            android:textSize="14sp" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:inputType="number|numberSigned|numberDecimal"
+            android:ems="10"
+            android:id="@+id/act_et_moveradium"
+            android:labelFor="@id/act_et_moveradium"
+            android:layout_weight="1.5"
+            android:textSize="12sp"
+            android:layout_height="35dp" />
+
+        <Button
+            android:text="@string/change"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:id="@+id/act_bt_moveradium"
+            android:layout_weight="0.5"
+            android:textSize="12sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="转角停范围："
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"
+            android:layout_weight="1"
+            android:textSize="14sp" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:inputType="number|numberSigned|numberDecimal"
+            android:ems="10"
+            android:id="@+id/act_et_angleradium"
+            android:labelFor="@id/act_et_angleradium"
+            android:layout_weight="1.5"
+            android:textSize="12sp" />
+
+        <Button
+            android:text="@string/change"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:id="@+id/act_bt_angleradium"
+            android:layout_weight="0.5"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="36dp">
+
+        <TextView
+            android:text="起始距离："
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="14sp" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:inputType="number|numberSigned|numberDecimal"
+            android:ems="10"
+            android:id="@+id/act_et_start"
+            android:labelFor="@id/act_et_start"
+            android:layout_weight="1.5"
+            android:textSize="12sp" />
+
+        <Button
+            android:text="@string/change"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:id="@+id/act_bt_start"
+            android:layout_weight="0.5"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="36dp">
+
+        <TextView
+            android:text="factor："
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="14sp" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:inputType="number|numberSigned|numberDecimal"
+            android:ems="10"
+            android:id="@+id/act_et_factor"
+            android:labelFor="@id/act_et_factor"
+            android:layout_weight="1.5"
+            android:textSize="12sp" />
+
+        <Button
+            android:text="@string/change"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:id="@+id/act_bt_factor"
+            android:layout_weight="0.5"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="36dp">
+
+        <TextView
+            android:text="最小速度："
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/act_et_speedmin"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1.5"
+            android:ems="10"
+            android:inputType="number|numberDecimal"
+            android:labelFor="@id/act_et_speedmin"
+            android:textSize="12sp" />
+
+        <Button
+            android:text="@string/change"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:id="@+id/act_bt_speedmin"
+            android:layout_weight="0.5"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="81dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/act_bt_start"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="start" />
+
+        <Button
+            android:id="@+id/act_bt_stop"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:text="@string/stop" />
+    </LinearLayout>
 
 </LinearLayout>

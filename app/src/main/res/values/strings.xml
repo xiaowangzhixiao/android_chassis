@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FirstCar</string>
+    <string name="app_name">Chassis</string>
     <string name="stop">stop</string>
     <string name="reboot">重启</string>
     <string name="action">action</string>
